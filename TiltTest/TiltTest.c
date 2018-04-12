@@ -56,9 +56,9 @@ UINT            curNew;              /* Cursor number storage */
 ORIENTATION     ortNew;              /* Tilt value storage */
 RECT            rcClient;            /* Size of current Client */
 RECT            rcVirtual;           /* Size of virtual screen */
-RECT            rcInfoTilt;          /* Size of tilt info box */
-RECT            rcInfoName;          /* Size of cursor name box */
-RECT            rcInfoGen;           /* Size of testing box */
+RECT            rcInfo1;          /* Size of tilt info box */
+RECT            rcInfo2;          /* Size of cursor name box */
+RECT            rcInfo3;           /* Size of testing box */
 RECT            rcDraw;              /* Size of draw area */
 double          aziFactor = 1;       /* Azimuth factor */
 double          altFactor = 1;       /* Altitude factor */
@@ -224,17 +224,17 @@ int     nCmdShow;
     ReleaseDC(hWnd, hDC);
 
 	GetClientRect(hWnd, &rcClient);
-	rcInfoTilt = rcClient;
-    rcInfoTilt.left   = Xinch / 8;
-    rcInfoTilt.top    = Yinch / 8;
-    rcInfoTilt.bottom = rcInfoTilt.top + nLineH;
-    rcInfoName = rcInfoTilt;
-    rcInfoName.top    += nLineH;
-    rcInfoName.bottom += nLineH;
-    rcInfoGen = rcInfoName;
-    rcInfoGen.top    += nLineH;
-    rcInfoGen.bottom += nLineH;
-    rcDraw = rcInfoGen;
+	rcInfo1 = rcClient;
+    rcInfo1.left   = Xinch / 8;
+    rcInfo1.top    = Yinch / 8;
+    rcInfo1.bottom = rcInfo1.top + nLineH;
+    rcInfo2 = rcInfo1;
+    rcInfo2.top    += nLineH;
+    rcInfo2.bottom += nLineH;
+    rcInfo3 = rcInfo2;
+    rcInfo3.top    += nLineH;
+    rcInfo3.bottom += nLineH;
+    rcDraw = rcInfo3;
     rcDraw.left   = 0;
     rcDraw.top   += nLineH;
     rcDraw.bottom = rcClient.bottom;
@@ -326,9 +326,9 @@ LPARAM          lParam;
 
 		case WM_SIZE: /* The window size changed so adjust the output boxes */
 			GetClientRect(hWnd, &rcClient);
-			rcInfoTilt.right = rcClient.right;
-		    rcInfoName.right = rcClient.right;
-		    rcInfoGen.right  = rcClient.right;
+			rcInfo1.right = rcClient.right;
+		    rcInfo2.right = rcClient.right;
+		    rcInfo3.right  = rcClient.right;
 		    rcDraw.right     = rcClient.right;
 		    rcDraw.bottom    = rcClient.bottom;
 		    /* redraw the entire window */
@@ -432,12 +432,12 @@ LPARAM          lParam;
 				else {
 				    strcpy(szOutput,"Tilt not supported.");
 				}
-				DrawText(hDC,szOutput,strlen(szOutput),&rcInfoTilt,DT_LEFT);
+				DrawText(hDC,szOutput,strlen(szOutput),&rcInfo1,DT_LEFT);
 
 				/* write current cursor name */ 
 				gpWTInfoA(WTI_CURSORS + curNew, CSR_NAME, szOutput);
 				wsprintf((LPSTR)szLabeledOutput, "Cursor Name: %s", szOutput);
-				DrawText(hDC, szLabeledOutput,strlen(szLabeledOutput),&rcInfoName,DT_LEFT);
+				DrawText(hDC, szLabeledOutput,strlen(szLabeledOutput),&rcInfo2,DT_LEFT);
 				
 				/* write tablet name */
 				gpWTInfoA(WTI_DEVICES, DVC_NAME, szOutput);
@@ -451,7 +451,7 @@ LPARAM          lParam;
 #else
 				wsprintf((LPSTR)szLabeledOutput, "Tablet Name: %s", szOutput);
 #endif
-				DrawText(hDC, szLabeledOutput,strlen(szLabeledOutput),&rcInfoGen,DT_LEFT);
+				DrawText(hDC, szLabeledOutput,strlen(szLabeledOutput),&rcInfo3,DT_LEFT);
 
 				/* draw circle based on tablet pressure */
 				Ellipse(hDC, x - prsNewScaled, y - prsNewScaled,
@@ -507,14 +507,14 @@ LPARAM          lParam;
 				if (ortNew.orAzimuth != ortOld.orAzimuth ||
 					ortNew.orAltitude != ortOld.orAltitude ||
 					ortNew.orTwist != ortOld.orTwist) {
-					InvalidateRect(hWnd, &rcInfoTilt, TRUE);
+					InvalidateRect(hWnd, &rcInfo1, TRUE);
 #if DEBUG
 					InvalidateRect(hWnd, &rcInfoGen, TRUE);
 #endif
 				}
 				/* if the cursor changes update the cursor name */
 				if (curNew != curOld) {
-					InvalidateRect(hWnd, &rcInfoName, TRUE);
+					InvalidateRect(hWnd, &rcInfo2, TRUE);
 				}
 			}
 			break;
