@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PenPointerTest", "TiltTest\TiltTest.vcxproj", "{459F5BB6-0E9D-4799-B87F-94C9F1F96DCC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TiltTest", "TiltTest\TiltTest.vcxproj", "{459F5BB6-0E9D-4799-B87F-94C9F1F96DCC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PenPointerTest", "PenPointerTest\PenPointerTest.vcxproj", "{45829899-B739-47C6-914F-67269BF2AF9F}"
 EndProject
@@ -17,15 +17,15 @@ Global
 		{459F5BB6-0E9D-4799-B87F-94C9F1F96DCC}.Debug|x64.ActiveCfg = Debug|Win32
 		{459F5BB6-0E9D-4799-B87F-94C9F1F96DCC}.Debug|x86.ActiveCfg = Debug|Win32
 		{459F5BB6-0E9D-4799-B87F-94C9F1F96DCC}.Debug|x86.Build.0 = Debug|Win32
-		{459F5BB6-0E9D-4799-B87F-94C9F1F96DCC}.Release|x64.ActiveCfg = Release|Win32
+		{459F5BB6-0E9D-4799-B87F-94C9F1F96DCC}.Release|x64.ActiveCfg = Release|x64
 		{459F5BB6-0E9D-4799-B87F-94C9F1F96DCC}.Release|x86.ActiveCfg = Release|Win32
 		{459F5BB6-0E9D-4799-B87F-94C9F1F96DCC}.Release|x86.Build.0 = Release|Win32
 		{45829899-B739-47C6-914F-67269BF2AF9F}.Debug|x64.ActiveCfg = Debug|x64
 		{45829899-B739-47C6-914F-67269BF2AF9F}.Debug|x64.Build.0 = Debug|x64
 		{45829899-B739-47C6-914F-67269BF2AF9F}.Debug|x86.ActiveCfg = Debug|Win32
 		{45829899-B739-47C6-914F-67269BF2AF9F}.Debug|x86.Build.0 = Debug|Win32
-		{45829899-B739-47C6-914F-67269BF2AF9F}.Release|x64.ActiveCfg = Release|x64
-		{45829899-B739-47C6-914F-67269BF2AF9F}.Release|x64.Build.0 = Release|x64
+		{45829899-B739-47C6-914F-67269BF2AF9F}.Release|x64.ActiveCfg = Release|Win32
+		{45829899-B739-47C6-914F-67269BF2AF9F}.Release|x64.Build.0 = Release|Win32
 		{45829899-B739-47C6-914F-67269BF2AF9F}.Release|x86.ActiveCfg = Release|Win32
 		{45829899-B739-47C6-914F-67269BF2AF9F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
