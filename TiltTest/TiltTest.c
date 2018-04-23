@@ -23,6 +23,7 @@
 
 ---------------------------------------------------------------------------- */
 #define DEBUG 0	/* Use rcInfogen for information rather than default*/
+#define explicitlyLinkWinTab 1
 
 #include <windows.h>
 #include <math.h>
@@ -147,6 +148,8 @@ int     nCmdShow;
 	/* many subsequence calls from this application to Windows.            */
 	hInst = hInstance;
 
+#if explicitlyLinkWinTab
+	// Explicitly load wintab32.dll
 	if ( !LoadWintab( ) )
 	{
 		ShowError( "Wintab not available" );
@@ -165,7 +168,7 @@ int     nCmdShow;
     if (strncmp(WName,"WACOM",5)) {
 		MessageBox(NULL, "Wacom Tablet Not Installed.", gpszProgramName, 
 		    	   MB_OK | MB_ICONHAND);
-//      return FALSE;
+      return FALSE;
     }
 
 	/* get info about tilt */
@@ -190,7 +193,7 @@ int     nCmdShow;
 			tilt_support = FALSE;
 		}
 	}
-	
+#endif
 	/* Create a main window for this application instance.  */
 	wsprintf(WName, "TiltTest:%x", hInst);
 	hWnd = CreateWindow(
@@ -561,6 +564,7 @@ LPARAM lParam;
 void Cleanup( void )
 {
 	WACOM_TRACE( "Cleanup()\n" );
-
+#if explicitlyLinkWinTab
 	UnloadWintab( );
+#endif
 }
