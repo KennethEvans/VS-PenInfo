@@ -22,7 +22,7 @@
 		All rights reserved.
 
 ---------------------------------------------------------------------------- */
-#define DEBUG 0	/* Use rcInfogen for information rather than default*/
+#define DEBUG_TILTTEST 0	/* Use rcInfogen for information rather than default*/
 #define explicitlyLinkWinTab 1
 
 #include <windows.h>
@@ -165,14 +165,14 @@ int     nCmdShow;
 
 	/* check if WACOM available. */
     gpWTInfoA(WTI_DEVICES, DVC_NAME, WName);
-    if (strncmp(WName,"WACOM",5)) {
-		MessageBox(NULL, "Wacom Tablet Not Installed.", gpszProgramName, 
-		    	   MB_OK | MB_ICONHAND);
-      return FALSE;
-    }
+  //  if (strncmp(WName,"WACOM",5)) {
+		//MessageBox(NULL, "Wacom Tablet Not Installed.", gpszProgramName, 
+		//    	   MB_OK | MB_ICONHAND);
+  //    return FALSE;
+  //  }
 
 	/* get info about tilt */
-	tilt_support = gpWTInfoA(WTI_DEVICES,DVC_ORIENTATION,&TpOri);
+	tilt_support = gpWTInfoA(WTI_DEVICES, DVC_ORIENTATION, &TpOri);
 	if (tilt_support) {
 		/* does the tablet support azimuth and altitude */
 		if (TpOri[0].axResolution && TpOri[1].axResolution) {
@@ -444,7 +444,7 @@ LPARAM          lParam;
 				
 				/* write tablet name */
 				gpWTInfoA(WTI_DEVICES, DVC_NAME, szOutput);
-#if DEBUG
+#if DEBUG_TILTTEST
 				//wsprintf((LPSTR)szLabeledOutput, "prsNew=%d presNewScaled=%d", prsNew, prsNewScaled);
 				//wsprintf((LPSTR)szLabeledOutput, "rcVirtual(left,top,right,bottom)=(%d,%d,%d,%d)",
 				//	rcVirtual.left, rcVirtual.top, rcVirtual.right, rcVirtual.bottom);
@@ -511,7 +511,7 @@ LPARAM          lParam;
 					ortNew.orAltitude != ortOld.orAltitude ||
 					ortNew.orTwist != ortOld.orTwist) {
 					InvalidateRect(hWnd, &rcInfo1, TRUE);
-#if DEBUG
+#if DEBUG_TILTTEST
 					InvalidateRect(hWnd, &rcInfoGen, TRUE);
 #endif
 				}
@@ -519,6 +519,11 @@ LPARAM          lParam;
 				if (curNew != curOld) {
 					InvalidateRect(hWnd, &rcInfo2, TRUE);
 				}
+
+				// Invalidate them all anyway
+				InvalidateRect(hWnd, &rcDraw, TRUE);
+				InvalidateRect(hWnd, &rcInfo1, TRUE);
+				InvalidateRect(hWnd, &rcInfo2, TRUE);
 			}
 			break;
 			
