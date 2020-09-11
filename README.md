@@ -1,6 +1,6 @@
 # Pen Test Apps
 
-This project contains several apps to test pen output. They were originally written to investigate claims made for tilt and pressure with the Microsoft Surface Pen. They should all show what values are being sent for tilt (angle and azimuth) and pressure, as well as other data available for the particular API.
+This project contains several apps to test pressure-sensitive pen output. They were originally written to investigate claims made for tilt and pressure with the Microsoft Surface Pen. They should all show what values are being sent for tilt (angle and azimuth) and pressure, as well as other data available for the particular API.
 
 The applications are:
 
@@ -33,7 +33,7 @@ The applications are:
 Just unzip the files from a Release into a directory somewhere convenient. Then run the applications from there.
 To uninstall, just delete these files.
 
-They can be installed on  USB drive and could potentially be used to test computers you may be considering in a store.
+They can be installed on a USB drive and could potentially be used to test computers you may be considering in a store.
 
 **More Information**
 
