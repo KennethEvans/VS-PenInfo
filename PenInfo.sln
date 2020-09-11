@@ -1,10 +1,16 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2015
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TiltTest", "TiltTest\TiltTest.vcxproj", "{459F5BB6-0E9D-4799-B87F-94C9F1F96DCC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PenPointerTest", "PenPointerTest\PenPointerTest.vcxproj", "{45829899-B739-47C6-914F-67269BF2AF9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{55DA75AB-3575-4C53-A4C4-3BDCBA955532}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		README.txt = README.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
